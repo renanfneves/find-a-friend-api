@@ -26,7 +26,7 @@ model ORG {
   username       String
   password_hash  String
   created_at     DateTime   @default(now())
-  Pet            Pet[]
+  Pets           Pet[]
   role           USER_ROLES @default(admin)
 
   @@index([city])

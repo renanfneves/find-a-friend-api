@@ -25,11 +25,11 @@ export class InMemoryPetsRepository implements IPetsRepository {
   }
 
   async get(filters: PetFilters) {
-    if (!filters.characteristics && !filters.justAvailableForAdoption) {
+    if (!filters.characteristics && !filters.onlyAvailableForAdoption) {
       return this.pets.filter((pet) => filters.orgsIds.includes(pet.orgId))
     }
     const availableForAdoptionValue =
-      filters.justAvailableForAdoption === true ? [true] : [true, false]
+      filters.onlyAvailableForAdoption === true ? [true] : [true, false]
 
     const characteristics = filters.characteristics || []
     const fieldsToFilterBy = Object.keys(characteristics).filter((key) => !!key)

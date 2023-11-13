@@ -9,7 +9,7 @@ import { Pet } from '@prisma/client'
 interface GetPetsUseCaseInput {
   city: string
   characteristics?: PetCharacteristics
-  justAvailableForAdoption?: boolean
+  onlyAvailableForAdoption?: boolean
 }
 
 interface GetPetsUseCaseOutput {
@@ -34,7 +34,7 @@ export class GetPetsUseCase {
     const pets = await this.petsRepository.get({
       orgsIds,
       characteristics: filters.characteristics,
-      justAvailableForAdoption: filters.justAvailableForAdoption,
+      onlyAvailableForAdoption: filters.onlyAvailableForAdoption,
     })
     return {
       pets,

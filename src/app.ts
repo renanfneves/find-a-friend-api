@@ -4,6 +4,8 @@ import { env } from './env'
 import fastifyJwt from '@fastify/jwt'
 import fastifyCookie from '@fastify/cookie'
 import { petsRoutes } from './http/controllers/pets/routes'
+import { authRoutes } from './http/controllers/auth/routes'
+import { orgsRoutes } from './http/controllers/orgs/routes'
 
 export const app = fastify()
 
@@ -24,6 +26,8 @@ app.register(fastifyJwt, {
 
 app.register(fastifyCookie)
 
+app.register(authRoutes)
+app.register(orgsRoutes)
 app.register(petsRoutes)
 
 app.setErrorHandler((error, _, reply) => {
@@ -33,13 +37,11 @@ app.setErrorHandler((error, _, reply) => {
       issues: error.format(),
     })
   }
-
   if (env.NODE_ENV !== 'production') {
     console.error(error)
   } else {
     // TODO: add log tool
   }
-
   return reply.status(500).send({
     message: 'Internal server error.',
   })

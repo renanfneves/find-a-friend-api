@@ -199,7 +199,7 @@ describe('Get Pets - Use Case', () => {
         breed: 'pit-bull',
         color: 'black',
       },
-      justAvailableForAdoption: true,
+      onlyAvailableForAdoption: true,
     })
     expect(pets).toHaveLength(1)
     const [pet] = pets
@@ -244,7 +244,7 @@ describe('Get Pets - Use Case', () => {
     })
     const { pets } = await sut.execute({
       city,
-      justAvailableForAdoption: true,
+      onlyAvailableForAdoption: true,
     })
     expect(pets).toHaveLength(2)
     expect(pets).toEqual([

@@ -10,7 +10,7 @@ export type PetCharacteristics = Partial<{
 export interface PetFilters {
   orgsIds: string[]
   characteristics?: PetCharacteristics
-  justAvailableForAdoption?: boolean
+  onlyAvailableForAdoption?: boolean
 }
 
 export interface IPetsRepository {
