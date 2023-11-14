@@ -24,7 +24,7 @@ export async function get(request: FastifyRequest, reply: FastifyReply) {
         ? { specie, breed, size, color }
         : undefined
     const getPetsUseCase = makeGetPetsUseCase()
-    const pets = await getPetsUseCase.execute({
+    const { pets } = await getPetsUseCase.execute({
       city,
       characteristics,
       onlyAvailableForAdoption: adoption,
